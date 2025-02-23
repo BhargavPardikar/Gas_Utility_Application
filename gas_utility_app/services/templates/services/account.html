@@ -1,0 +1,86 @@
+{% extends 'services/base.html' %}
+{% block content %}
+<h2>Account Information</h2>
+<p>Name: {{ customer.name }}</p>
+<p>Email: {{ customer.email }}</p>
+<p>Phone: {{ customer.phone }}</p>
+<p>Address: {{ customer.address }}</p>
+{% endblock %} 
+
+{% extends 'services/base.html' %}
+{% block content %}
+<h2>Account Information</h2>
+
+<!-- Display Profile Image -->
+<div>
+    {% if customer.profile_image %}
+        <img src="{{ customer.profile_image.url }}" alt="Profile Image" width="150">
+    {% else %}
+        <p>No profile image uploaded.</p>
+    {% endif %}
+</div>
+
+<!-- Display Customer Information -->
+<div>
+    <p><strong>Name:</strong> {{ customer.name }}</p>
+    <p><strong>Email:</strong> {{ customer.email }}</p>
+    <p><strong>Phone:</strong> {{ customer.phone }}</p>
+    <p><strong>Address:</strong> {{ customer.address }}</p>
+    <p><strong>Total Orders:</strong> {{ customer.total_orders }}</p>
+    <p><strong>Pending Orders:</strong> {{ customer.pending_orders }}</p>
+</div>
+
+<!-- Form to Edit Customer Information -->
+<h3>Edit Information</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+
+<!-- Additional Options -->
+<div>
+    <h3>Options</h3>
+    <ul>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="#">Change Email</a></li>
+        <li><a href="#">Add Another User</a></li>
+        <li><a href="#">Contact Support</a></li>
+    </ul>
+</div>
+{% endblock %} 
+
+{% extends 'services/base.html' %}
+{% block content %}
+<h2>Account Information</h2>
+
+<!-- Display Profile Image -->
+<div>
+    {% if customer.profile_image %}
+        <img src="{{ customer.profile_image.url }}" alt="Profile Image" width="150">
+    {% else %}
+        <p>No profile image uploaded.</p>
+    {% endif %}
+</div>
+
+<!-- Display Customer Information -->
+<div>
+    <p><strong>Full Name:</strong> {{ customer.full_name }}</p>
+    <p><strong>Age:</strong> {{ customer.age }}</p>
+    <p><strong>Email:</strong> {{ customer.email }}</p>
+    <p><strong>Mobile Number:</strong> {{ customer.mobile_number }}</p>
+    <p><strong>Address:</strong> {{ customer.address }}</p>
+    <p><strong>Total Orders:</strong> {{ customer.total_orders }}</p>
+    <p><strong>Pending Orders:</strong> {{ customer.pending_orders }}</p>
+</div>
+
+<!-- Additional Options -->
+<div>
+    <h3>Options</h3>
+    <ul>
+        <li><a href="#">Change Email</a></li>
+        <li><a href="#">Add Another User</a></li>
+        <li><a href="#">Contact Support</a></li>
+    </ul>
+</div>
+{% endblock %}
